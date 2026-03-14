@@ -1,0 +1,26 @@
+% Requires: \usepackage{booktabs,multirow,graphicx}
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{ {{ caption }} }
+\label{ {{ label }} }
+\resizebox{\linewidth}{!}{
+\begin{tabular}{ {{ alignment }} }
+\toprule
+\multirow{2}{*}{Model}
+{% for dataset in dataset_headers %} & \multicolumn{ {{ dataset.span }} }{c}{ {{ dataset.name }} }{% endfor %} \\
+{% for dataset in dataset_headers %}\cmidrule(lr){ {{ dataset.start_col }}-{{ dataset.end_col }} }{% endfor %}
+& {% for column in metric_columns %}{{ column.metric_label }}{% if not loop.last %} & {% endif %}{% endfor %} \\
+\midrule
+{% for row in rows -%}
+{{ row["row_label"] }} & {% for cell in row["values"] %}{{ cell }}{% if not loop.last %} & {% endif %}{% endfor %} \\
+{% endfor %}
+\bottomrule
+\end{tabular}
+}
+\vspace{2pt}
+\begin{minipage}{0.98\linewidth}
+\footnotesize {{ note }}
+\end{minipage}
+\end{table*}

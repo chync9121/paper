@@ -1,0 +1,134 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg-top: #edf5ff;
+  --bg-bottom: #f7fafc;
+  --line: #d6e0ea;
+  --line-strong: #c1cfdd;
+  --text-main: #0f172a;
+  --text-soft: #4b5563;
+  --card: rgba(255, 255, 255, 0.86);
+  --card-deep: rgba(255, 255, 255, 0.96);
+  --primary: #0f6db8;
+  --primary-hover: #0b5f9f;
+  --emerald: #0f766e;
+  --amber: #b45309;
+  --shadow-soft: 0 16px 48px rgba(15, 23, 42, 0.08);
+  --shadow-float: 0 14px 30px rgba(30, 64, 175, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(1200px 640px at -8% -20%, #d7eaff 0%, transparent 66%),
+    radial-gradient(900px 520px at 102% 0%, #ffe8cf 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  background-attachment: fixed;
+}
+
+.font-title {
+  font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+  letter-spacing: 0.2px;
+}
+
+.surface-card {
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
+}
+
+.section-enter {
+  animation: rise-in 0.42s ease-out both;
+}
+
+.input-field {
+  border-radius: 12px;
+  border: 1px solid var(--line-strong);
+  background: var(--card-deep);
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #7aaed8;
+  box-shadow: 0 0 0 3px rgba(15, 109, 184, 0.12);
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, #0f6db8, #0b5f9f);
+}
+
+.btn-emerald {
+  background: linear-gradient(120deg, #0f766e, #0c5f59);
+}
+
+.btn-amber {
+  background: linear-gradient(120deg, #b45309, #92400e);
+}
+
+.chip {
+  border-radius: 999px;
+  border: 1px solid #d5e3ef;
+  background: #f4f9ff;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #2f3e51;
+}
+
+.soft-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #c7d2e0 transparent;
+}
+
+.code-text {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

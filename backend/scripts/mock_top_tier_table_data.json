@@ -1,0 +1,166 @@
+{
+  "benchmark_table": {
+    "caption": "Comparison with representative baselines on image benchmarks.",
+    "label": "tab:benchmark-main",
+    "note": "Best results are bold and second-best results are underlined. Larger is better for Top-1 Accuracy and Macro-F1, while smaller is better for ECE.",
+    "precision": 2,
+    "dataset_order": ["CIFAR-10", "ImageNet-1K"],
+    "metric_order": ["Top-1 Accuracy", "Macro-F1", "ECE"],
+    "metric_directions": {
+      "Top-1 Accuracy": "max",
+      "Macro-F1": "max",
+      "ECE": "min"
+    },
+    "model_order": ["ResNet-50", "ViT-B/16", "ConvNeXt-Tiny", "Ours"],
+    "models": [
+      {
+        "model": "ResNet-50",
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 95.20,
+            "Macro-F1": 94.70,
+            "ECE": 3.40
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 79.80,
+            "Macro-F1": 78.90,
+            "ECE": 5.80
+          }
+        }
+      },
+      {
+        "model": "ViT-B/16",
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 97.10,
+            "Macro-F1": 96.80,
+            "ECE": 2.70
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 81.60,
+            "Macro-F1": 80.90,
+            "ECE": 4.90
+          }
+        }
+      },
+      {
+        "model": "ConvNeXt-Tiny",
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 96.80,
+            "Macro-F1": 96.10,
+            "ECE": 2.40
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 82.70,
+            "Macro-F1": 81.50,
+            "ECE": 4.30
+          }
+        }
+      },
+      {
+        "model": "Ours",
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 97.50,
+            "Macro-F1": 97.10,
+            "ECE": 2.10
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 83.40,
+            "Macro-F1": 82.20,
+            "ECE": 4.00
+          }
+        }
+      }
+    ]
+  },
+  "ablation_table": {
+    "caption": "Ablation study on key system components.",
+    "label": "tab:ablation-main",
+    "note": "Each variant toggles one or more modules. Best results are bold and second-best results are underlined.",
+    "precision": 2,
+    "dataset_order": ["CIFAR-10", "ImageNet-1K"],
+    "metric_order": ["Top-1 Accuracy", "ECE"],
+    "metric_directions": {
+      "Top-1 Accuracy": "max",
+      "ECE": "min"
+    },
+    "component_order": ["KG", "LLM", "Table Engine"],
+    "variant_order": ["w/o KG", "w/o LLM", "w/o Table", "Full System"],
+    "variants": [
+      {
+        "variant": "w/o KG",
+        "components": {
+          "KG": false,
+          "LLM": true,
+          "Table Engine": true
+        },
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 96.90,
+            "ECE": 2.60
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 82.20,
+            "ECE": 4.60
+          }
+        }
+      },
+      {
+        "variant": "w/o LLM",
+        "components": {
+          "KG": true,
+          "LLM": false,
+          "Table Engine": true
+        },
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 97.00,
+            "ECE": 2.40
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 82.50,
+            "ECE": 4.40
+          }
+        }
+      },
+      {
+        "variant": "w/o Table",
+        "components": {
+          "KG": true,
+          "LLM": true,
+          "Table Engine": false
+        },
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 97.20,
+            "ECE": 2.30
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 82.80,
+            "ECE": 4.20
+          }
+        }
+      },
+      {
+        "variant": "Full System",
+        "components": {
+          "KG": true,
+          "LLM": true,
+          "Table Engine": true
+        },
+        "scores": {
+          "CIFAR-10": {
+            "Top-1 Accuracy": 97.50,
+            "ECE": 2.10
+          },
+          "ImageNet-1K": {
+            "Top-1 Accuracy": 83.40,
+            "ECE": 4.00
+          }
+        }
+      }
+    ]
+  }
+}

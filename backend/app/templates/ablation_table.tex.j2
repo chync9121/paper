@@ -1,0 +1,30 @@
+% Requires: \usepackage{booktabs,graphicx,amssymb}
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{ {{ caption }} }
+\label{ {{ label }} }
+\resizebox{\linewidth}{!}{
+\begin{tabular}{ {{ alignment }} }
+\toprule
+\multirow{2}{*}{Variant}
+{% for component in component_names %} & \multirow{2}{*}{ {{ component }} }{% endfor %}
+{% for dataset in dataset_headers %} & \multicolumn{ {{ dataset.span }} }{c}{ {{ dataset.name }} }{% endfor %} \\
+{% for dataset in dataset_headers %}\cmidrule(lr){ {{ dataset.start_col }}-{{ dataset.end_col }} }{% endfor %}
+{% if component_names|length > 0 %} {% for _ in component_names %} & {% endfor %}{% endif %}
+{% for column in metric_columns %}{{ column.metric_label }}{% if not loop.last %} & {% endif %}{% endfor %} \\
+\midrule
+{% for row in rows -%}
+{{ row["row_label"] }}
+{% for component_value in row["components"] %} & {{ component_value }}{% endfor %}
+{% for cell in row["values"] %} & {{ cell }}{% endfor %} \\
+{% endfor %}
+\bottomrule
+\end{tabular}
+}
+\vspace{2pt}
+\begin{minipage}{0.98\linewidth}
+\footnotesize {{ note }}
+\end{minipage}
+\end{table}

@@ -1,0 +1,40 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/.venv/
+backend/logs/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/logs/
+
+# Generated artifacts
+backend/generated_papers/
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

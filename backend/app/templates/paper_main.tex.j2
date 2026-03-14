@@ -1,0 +1,62 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{times}
+
+% Self-contained manuscript draft. Replace the class/style file with the official
+% venue template (e.g. CVPR/NeurIPS/ACL) before submission if needed.
+
+\begin{document}
+
+\title{ {{ title }} }
+\author{Auto-generated Draft}
+\maketitle
+
+\begin{abstract}
+{{ sections.abstract }}
+\end{abstract}
+
+\section{Introduction}
+{{ sections.introduction }}
+
+\section{Related Work}
+{{ sections.related_work }}
+
+\section{Method}
+{{ sections.method }}
+
+\section{Experiments}
+{{ sections.experiments }}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{ {{ performance_figure_relpath }} }
+\caption{Automatic performance comparison chart generated from the evaluation dashboard.}
+\label{fig:performance-comparison}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{ {{ calibration_figure_relpath }} }
+\caption{Automatic calibration-style scatter view generated from experiment metrics.}
+\label{fig:calibration-view}
+\end{figure}
+
+\input{ {{ main_table_relpath }} }
+
+\input{ {{ ablation_table_relpath }} }
+
+\section{Conclusion}
+{{ sections.conclusion }}
+
+{\small
+\bibliographystyle{plain}
+\bibliography{refs}
+}
+
+\end{document}
